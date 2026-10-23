@@ -14,18 +14,18 @@ function CvPage() {
   const { profile, experience, projects, education, skills, languages } = portfolioData;
 
   return (
-    <main className="print-page">
-      <div className="page-shell grid gap-12 py-10 sm:py-12 md:grid-cols-[180px_1fr] lg:gap-20">
-        <aside className="no-print md:sticky md:top-28 md:h-fit">
-          <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-sky">
+    <main className="print-page overflow-x-clip">
+      <div className="page-shell grid min-w-0 gap-8 py-8 sm:gap-12 sm:py-12 md:grid-cols-[180px_minmax(0,1fr)] lg:gap-20">
+        <aside className="no-print min-w-0 max-w-full md:sticky md:top-28 md:h-fit">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-sky md:mb-5">
             On this page
           </p>
-          <nav className="flex gap-4 overflow-x-auto pb-3 md:flex-col md:gap-1 md:overflow-visible">
+          <nav className="flex max-w-full flex-wrap gap-2 pb-1 md:flex-col md:flex-nowrap md:gap-1 md:pb-3">
             {sectionLinks.map(([id, label]) => (
               <a
                 key={id}
                 href={`#${id}`}
-                className="focus-ring whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold text-mist transition hover:bg-panel hover:text-heading"
+                className="focus-ring whitespace-nowrap rounded-lg border border-line px-3 py-2 text-sm font-semibold text-mist transition hover:bg-panel hover:text-heading md:border-transparent"
               >
                 {label}
               </a>
@@ -34,11 +34,11 @@ function CvPage() {
         </aside>
 
         <div className="min-w-0">
-          <div className="no-print mb-6 flex justify-end">
+          <div className="no-print mb-5 flex sm:justify-end">
             <a
               href={cvPdfUrl}
               download="Faisal_Saleh_CV.pdf"
-              className="focus-ring inline-flex w-fit items-center gap-3 rounded-xl border border-line bg-panel px-5 py-3 text-sm font-bold text-sky transition hover:border-sky"
+              className="focus-ring inline-flex w-full items-center justify-center gap-3 rounded-xl border border-line bg-panel px-5 py-3 text-sm font-bold text-sky transition hover:border-sky sm:w-fit"
             >
               <span className="text-xl">⇩</span>
               Save as PDF
@@ -46,9 +46,9 @@ function CvPage() {
           </div>
 
           <section id="basics" className="scroll-mt-24 pb-12">
-            <article className="print-card surface-card p-6 sm:p-8">
-              <h2 className="text-3xl font-medium text-heading">Basics</h2>
-              <dl className="mt-8 space-y-4 text-base leading-7 sm:text-lg sm:leading-8">
+            <article className="print-card surface-card min-w-0 p-5 sm:p-8">
+              <h2 className="text-2xl font-medium text-heading sm:text-3xl">Basics</h2>
+              <dl className="mt-6 min-w-0 space-y-4 text-base leading-7 sm:mt-8 sm:text-lg sm:leading-8">
                 <div className="grid gap-1 sm:grid-cols-[120px_1fr] sm:gap-5">
                   <dt className="font-semibold text-heading">Name</dt>
                   <dd className="print-muted text-mist">{profile.name}</dd>
@@ -92,10 +92,10 @@ function CvPage() {
           </section>
 
           <section id="experience" className="scroll-mt-24 border-t border-line py-12">
-            <h2 className="text-3xl font-medium text-heading">Experience</h2>
+            <h2 className="text-2xl font-medium text-heading sm:text-3xl">Experience</h2>
             <div className="mt-7 space-y-4">
               {experience.map((item) => (
-                <article key={`${item.title}-${item.place}`} className="print-card surface-card p-6">
+                <article key={`${item.title}-${item.place}`} className="print-card surface-card min-w-0 p-5 sm:p-6">
                   <p className="text-xs font-bold uppercase tracking-widest text-sky">{item.period}</p>
                   <h3 className="mt-3 text-lg font-semibold text-heading">{item.title}</h3>
                   <p className="print-muted mt-1 text-sm text-mist">{item.place} · {item.location}</p>
@@ -123,10 +123,10 @@ function CvPage() {
           </section>
 
           <section id="projects" className="scroll-mt-24 border-t border-line py-12">
-            <h2 className="text-3xl font-medium text-heading">Projects</h2>
+            <h2 className="text-2xl font-medium text-heading sm:text-3xl">Projects</h2>
             <div className="mt-7 space-y-4">
               {projects.map((project) => (
-                <article key={project.title} className="print-card surface-card p-6">
+                <article key={project.title} className="print-card surface-card min-w-0 p-5 sm:p-6">
                   <p className="text-xs font-bold uppercase tracking-widest text-sky">{project.type}</p>
                   <h3 className="mt-3 text-lg font-semibold text-heading">{project.title}</h3>
                   <p className="print-muted mt-3 text-sm leading-6 text-mist">{project.description}</p>
@@ -159,10 +159,10 @@ function CvPage() {
           </section>
 
           <section id="education" className="scroll-mt-24 border-t border-line py-12">
-            <h2 className="text-3xl font-medium text-heading">Education</h2>
+            <h2 className="text-2xl font-medium text-heading sm:text-3xl">Education</h2>
             <div className="mt-7 space-y-4">
               {education.map((item) => (
-                <article key={item.title} className="print-card surface-card p-6">
+                <article key={item.title} className="print-card surface-card min-w-0 p-5 sm:p-6">
                   <p className="text-xs font-bold uppercase tracking-widest text-sky">{item.period}</p>
                   <h3 className="mt-3 text-lg font-semibold text-heading">{item.title}</h3>
                   <p className="print-muted mt-1 text-sm text-mist">{item.place}</p>
@@ -173,7 +173,7 @@ function CvPage() {
           </section>
 
           <section id="skills" className="scroll-mt-24 border-t border-line py-12">
-            <h2 className="text-3xl font-medium text-heading">Skills</h2>
+            <h2 className="text-2xl font-medium text-heading sm:text-3xl">Skills</h2>
             <div className="mt-7 grid gap-4 sm:grid-cols-2">
               {skills.map((group) => (
                 <div key={group.category} className="print-card surface-card p-5">
@@ -187,12 +187,12 @@ function CvPage() {
           </section>
 
           <section id="languages" className="scroll-mt-24 border-t border-line py-12">
-            <h2 className="text-3xl font-medium text-heading">Languages</h2>
+            <h2 className="text-2xl font-medium text-heading sm:text-3xl">Languages</h2>
             <div className="print-card surface-card mt-7 divide-y divide-line overflow-hidden">
               {languages.map((language) => (
-                <div key={language.name} className="flex items-center justify-between gap-4 px-6 py-5">
+                <div key={language.name} className="grid gap-1 px-5 py-5 sm:grid-cols-[120px_1fr] sm:items-center sm:gap-4 sm:px-6">
                   <p className="font-semibold text-heading">{language.name}</p>
-                  <p className="print-muted text-sm text-mist">{language.level}</p>
+                  <p className="print-muted min-w-0 break-words text-sm text-mist sm:text-right">{language.level}</p>
                 </div>
               ))}
             </div>
