@@ -13,6 +13,13 @@ const sectionLinks = [
 function CvPage() {
   const { profile, experience, projects, education, skills, languages } = portfolioData;
 
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <main className="print-page overflow-x-clip">
       <div className="page-shell grid min-w-0 gap-8 py-8 sm:gap-12 sm:py-12 md:grid-cols-[180px_minmax(0,1fr)] lg:gap-20">
@@ -22,13 +29,14 @@ function CvPage() {
           </p>
           <nav className="flex max-w-full flex-wrap gap-2 pb-1 md:flex-col md:flex-nowrap md:gap-1 md:pb-3">
             {sectionLinks.map(([id, label]) => (
-              <a
+              <button
                 key={id}
-                href={`#${id}`}
-                className="focus-ring whitespace-nowrap rounded-lg border border-line px-3 py-2 text-sm font-semibold text-mist transition hover:bg-panel hover:text-heading md:border-transparent"
+                type="button"
+                onClick={() => scrollToSection(id)}
+                className="focus-ring whitespace-nowrap rounded-lg border border-line px-3 py-2 text-left text-sm font-semibold text-mist transition hover:bg-panel hover:text-heading md:border-transparent"
               >
                 {label}
-              </a>
+              </button>
             ))}
           </nav>
         </aside>
